@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 import csv
 import datetime
-import os
+import os, sys
 
 def func (username, password, pukcode, iccid, title, first_name, last_name, email, dob, phone_number, country, post_code, city_name, street_name, house_number, document_issuing_authority, document_id_number, file_name):
 
@@ -14,6 +14,8 @@ def func (username, password, pukcode, iccid, title, first_name, last_name, emai
 	# Setting the option to run the web (Chrome) browser headless i.e. without the GUI window
 	options = Options()
 	options.headless = True
+	options.add_argument("--no-sandbox") # bypass OS security model
+	options.add_argument("--disable-dev-shm-usage") # overcome limited resource problems
 
 	driver = webdriver.Chrome(chrome_options=options)
 
@@ -91,6 +93,7 @@ def func (username, password, pukcode, iccid, title, first_name, last_name, emai
 			break
 		elif driver.find_element_by_id("step1Msg").text != '':
 		# Return with error message if pukcode and iccid is not passed
+			time.sleep(3)
 			return driver.find_element_by_id("step1Msg").text
 			# pukcode_validation = "Failed"
 			# break
@@ -266,3 +269,6 @@ def func (username, password, pukcode, iccid, title, first_name, last_name, emai
 	time.sleep(30)
 	# Return whatever text displays at the end
 	return driver.find_element_by_id("message").text
+
+if __name__ == '__main__':
+	print(func(*sys.argv[1:]))
