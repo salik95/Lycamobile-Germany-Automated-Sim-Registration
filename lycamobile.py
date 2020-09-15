@@ -7,7 +7,7 @@ import csv
 import datetime
 import os
 
-def func (username, password, pukcode, iccid, title, first_name, last_name, email, dob, phone_number, country, post_code, city_name, street_name, house_number, file_name):
+def func (username, password, pukcode, iccid, title, first_name, last_name, email, dob, phone_number, country, post_code, city_name, street_name, house_number, document_issuing_authority, document_id_number, file_name):
 
 	# Standard wait time for any element to load
 	STANDARD_WAIT_TIME = 60
