@@ -270,5 +270,6 @@ def register (username, password, pukcode, iccid, title, first_name, last_name, 
 	# Return whatever text displays at the end
 	return driver.find_element_by_id("message").text
 
-# if __name__ == '__main__':
-# 	print(register(*sys.argv[1:]))
+if __name__ == '__main__':
+	print(*sys.argv[1:])
+	print(register(*sys.argv[1:]))
